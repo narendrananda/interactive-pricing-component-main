@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+        name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- displays site properly based on user's device -->
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <link rel="stylesheet" href="style.css">
+
+        <title>Frontend Mentor | Interactive pricing component</title>
+
+    </head>
+    <body>
+
+        <div class="main">
+    
+            <div class="heading">
+                <h3>Simple, traffic-based pricing</h3>
+                <p>Sign-up for our 30-day trial. No credit card required.</p>
+            </div>
+        
+            <div class="price_card">
+                <div class="upper">
+                    
+                    <p class="item1"><span id="pages" class="pages"> 100K   </span> PAGEVIEWS </p>
+                    <input  id="slider" class="item2 slider" type="range" min="1" max="5" value="3" oninput="change()" >
+                    <p class="item3"><span id="cost" class="cost">$16.00</span>/month</p>
+                    
+                    <label class="toggleButton item4">
+                        <span>Monthly Billing </span>
+                        <input  id="mycheck" type="checkbox" onclick="check()" >
+                        <span>Yearly Billing <span id="discount" class="discount">25% discount</span></span>
+                    </label>
+                    
+                </div>
+                <hr/>
+                <div class="lower">
+                    <div class="feature">
+                    
+                            <p>
+                                <span><img src="./images/icon-check.svg" alt="">                               </span>
+                                <span> Unlimited websites</span>
+                            </p>
+                            <p>
+                                <span><img src="./images/icon-check.svg" alt=""></span>
+                                <span>100% data ownership</span>
+                            </p>
+                            <p>
+                                <span><img src="./images/icon-check.svg" alt=""></span>
+                                <span>Email reports</span>
+                            </p>
+                        
+                    </div>
+                    <div class="trial"><button class="submit">Start my trial</button></div>
+                </div>
+            </div>
+        </div>
+        
+
+        <script> 
+                var mycheck = document.getElementById("mycheck");
+                var cost = document.getElementById("cost");
+                var pages = document.getElementById("pages");
+                var slider = document.getElementById("slider");
+                var discount = document.getElementById("discount");
+                var screenWidth = window.innerWidth;
+                
+                document.getElementsByTagName("BODY")[0].onresize = function() {resize()};
+                        
+            function resize(){ 
+                var screenWidth = window.innerWidth;
+                if(screenWidth<500){
+                    discount.innerHTML = "-25%";
+                }else{
+                    discount.innerHTML = "25% discount";
+                }
+            }
+
+            checkValue();
+            
+            mycheck.onchange = function(){
+                change();
+            }    
+
+
+            function change(){
+                checkValue();
+            }
+
+            function checkValue(){
+                if(slider.value==1){
+                    if(mycheck.checked==true){
+                        cost.innerHTML = "$6.00"; 
+                    }else{
+                        cost.innerHTML = "$8.00";
+                    }
+                    pages.innerHTML = "10K";
+                    slider.style.background= "linear-gradient( 90deg , hsl(174, 77%, 80%) 0% , hsl(224, 65%, 95%) 0%)";
+                }
+                if(slider.value==2){
+                    if(mycheck.checked==true){
+                        cost.innerHTML = "$9.00"; 
+                    }else{
+                        cost.innerHTML = "$12.00";
+                    }
+                    pages.innerHTML = "50K";
+                    slider.style.background= "linear-gradient( 90deg , hsl(174, 77%, 80%) 25% , hsl(224, 65%, 95%) 0%)";
+                }
+                if(slider.value==3){
+                    if(mycheck.checked==true){
+                        cost.innerHTML = "$12.00"; 
+                    }else{
+                        cost.innerHTML = "$16.00";
+                    }
+                    pages.innerHTML = "100K";
+                    slider.style.background= "linear-gradient( 90deg , hsl(174, 77%, 80%) 50% , hsl(224, 65%, 95%) 0%)";
+                }
+                if(slider.value==4){
+                    if(mycheck.checked==true){
+                        cost.innerHTML = "$18.00"; 
+                    }else{
+                        cost.innerHTML = "$24.00";
+                    }
+                    pages.innerHTML = "500K";
+                    slider.style.background= "linear-gradient( 90deg , hsl(174, 77%, 80%) 75% , hsl(224, 65%, 95%) 0%)";
+                }
+                if(slider.value==5){
+                    if(mycheck.checked==true){
+                        cost.innerHTML = "$27.00"; 
+                    }else{
+                        cost.innerHTML = "$36.00";
+                    }
+                    pages.innerHTML = "1M";
+                    slider.style.background= "linear-gradient( 90deg , hsl(174, 77%, 80%) 100% , hsl(224, 65%, 95%) 0%)";
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
+
+
+
+<!-- <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+              Coded by
+    <a href="#">Narendra Nanda</a>.
+</div> -->
